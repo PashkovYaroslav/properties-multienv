@@ -7,6 +7,8 @@ import jfork.nproperty.ConfigParser;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
+import static com.epam.pashkov.multienv.props.Constants.*;
+
 /**
  * User: Yaroslav_Pashkov
  * Date: 25.11.2015
@@ -16,13 +18,13 @@ import java.lang.reflect.InvocationTargetException;
 public class NPropertyConfig {
     private String path;
 
-    @Cfg("test.login")
+    @Cfg(ParamNames.TEST_LOGIN_PARAM)
     private static String login;
 
-    @Cfg("test.prodcount")
+    @Cfg(ParamNames.TEST_PRODCOUNT_PARAM)
     private static int prodCount;
 
-    @Cfg(value = "test.users", splitter = ", ")
+    @Cfg(value = ParamNames.TEST_USERS_PARAM, splitter = ", ")
     private static String[] users;
 
     public NPropertyConfig(String path) {

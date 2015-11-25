@@ -8,16 +8,18 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.util.*;
 
+import static com.epam.pashkov.multienv.props.Constants.*;
+
 /**
  * User: Yaroslav_Pashkov
  * Date: 25.11.2015
  * Time: 14:10
  */
-public class GroovyConf {
+public class GroovyConfig {
 
     private String path;
 
-    public GroovyConf(String path) {
+    public GroovyConfig(String path) {
         this.path = path;
     }
 
@@ -29,8 +31,8 @@ public class GroovyConf {
             e.printStackTrace();
         }
         Map flattenedConfig = config.flatten();
-        String[] users = ((String) flattenedConfig.get("test.users")).split(", ");
+        String[] users = ((String) flattenedConfig.get(ParamNames.TEST_USERS_PARAM)).split(", ");
 
-        return new CurrentConf((String) flattenedConfig.get("test.login"), (Integer) flattenedConfig.get("test.prodcount"), users);
+        return new CurrentConf((String) flattenedConfig.get(ParamNames.TEST_LOGIN_PARAM), (Integer) flattenedConfig.get(ParamNames.TEST_PRODCOUNT_PARAM), users);
     }
 }

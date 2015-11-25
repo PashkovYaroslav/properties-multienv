@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import static com.epam.pashkov.multienv.props.Constants.*;
+
 /**
  * User: Yaroslav_Pashkov
  * Date: 25.11.2015
@@ -24,11 +26,11 @@ public class StandardConfig {
         String[] users = null;
         try {
             props.load(new FileInputStream(new File(path)));
-            users = props.getProperty("test.users").split(", ");
+            users = props.getProperty(ParamNames.TEST_USERS_PARAM).split(", ");
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-        return new CurrentConf(props.getProperty("test.login"), Integer.parseInt(props.getProperty("test.prodcount")), users);
+        return new CurrentConf(props.getProperty(ParamNames.TEST_LOGIN_PARAM), Integer.parseInt(props.getProperty(ParamNames.TEST_PRODCOUNT_PARAM)), users);
     }
 }
