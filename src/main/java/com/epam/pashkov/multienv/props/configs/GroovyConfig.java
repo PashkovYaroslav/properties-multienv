@@ -33,6 +33,7 @@ public class GroovyConfig {
         Map flattenedConfig = config.flatten();
         String[] users = ((String) flattenedConfig.get(ParamNames.TEST_USERS_PARAM)).split(", ");
 
-        return new CurrentConf((String) flattenedConfig.get(ParamNames.TEST_LOGIN_PARAM), (Integer) flattenedConfig.get(ParamNames.TEST_PRODCOUNT_PARAM), users);
+        return new CurrentConf((String) flattenedConfig.get(ParamNames.TEST_LOGIN_PARAM), (Integer) flattenedConfig
+                .get(ParamNames.TEST_PRODCOUNT_PARAM), users);
     }
 }

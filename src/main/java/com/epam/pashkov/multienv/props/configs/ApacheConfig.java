@@ -27,6 +27,7 @@ public class ApacheConfig {
             e.printStackTrace();
         }
         String[] apacheUsers = propertiesConfiguration.getStringArray(ParamNames.TEST_USERS_PARAM);
-        return new CurrentConf(propertiesConfiguration.getString(ParamNames.TEST_LOGIN_PARAM), propertiesConfiguration.getInt(ParamNames.TEST_PRODCOUNT_PARAM),  apacheUsers);
+        return new CurrentConf(propertiesConfiguration.getString(ParamNames.TEST_LOGIN_PARAM), propertiesConfiguration
+                .getInt(ParamNames.TEST_PRODCOUNT_PARAM),  apacheUsers);
     }
 }

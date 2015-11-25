@@ -31,6 +31,7 @@ public class StandardConfig {
         catch (IOException e) {
             e.printStackTrace();
         }
-        return new CurrentConf(props.getProperty(ParamNames.TEST_LOGIN_PARAM), Integer.parseInt(props.getProperty(ParamNames.TEST_PRODCOUNT_PARAM)), users);
+        return new CurrentConf(props.getProperty(ParamNames.TEST_LOGIN_PARAM), Integer.parseInt(props
+                .getProperty(ParamNames.TEST_PRODCOUNT_PARAM)), users);
     }
 }
