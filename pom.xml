@@ -20,6 +20,14 @@
             <artifactId>properties-loader</artifactId>
             <version>1.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>jfork.nproperty</groupId>
+            <artifactId>nproperty</artifactId>
+            <version>1.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/nproperty-1.1.jar</systemPath>
+        </dependency>
     </dependencies>
 
 
