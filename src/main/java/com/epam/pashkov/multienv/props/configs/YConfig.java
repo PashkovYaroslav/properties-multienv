@@ -1,5 +1,6 @@
 package com.epam.pashkov.multienv.props.configs;
 
+import com.epam.pashkov.multienv.props.Constants;
 import com.epam.pashkov.multienv.props.CurrentConf;
 import ru.yandex.qatools.properties.PropertyLoader;
 import ru.yandex.qatools.properties.annotations.Property;
@@ -11,7 +12,7 @@ import static com.epam.pashkov.multienv.props.Constants.*;
  * Created by Yaroslav on 25.11.2015.
  */
 
-@Resource.Classpath("config.properties")
+@Resource.Classpath(Path.CONFIG_PROPERTIES)
 public class YConfig {
 
     public YConfig() {
