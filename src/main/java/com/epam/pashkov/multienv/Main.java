@@ -1,9 +1,6 @@
 package com.epam.pashkov.multienv;
 
-import com.epam.pashkov.multienv.props.configs.ApacheConf;
-import com.epam.pashkov.multienv.props.configs.NPropertyConfig;
-import com.epam.pashkov.multienv.props.configs.StandardConfig;
-import com.epam.pashkov.multienv.props.configs.YConfig;
+import com.epam.pashkov.multienv.props.configs.*;
 
 /**
  * Created by Yaroslav on 24.11.2015.
@@ -11,6 +8,7 @@ import com.epam.pashkov.multienv.props.configs.YConfig;
 public class Main {
 
     public static final String SRC_MAIN_RESOURCES_CONFIG_PROPERTIES = "src/main/resources/config.properties";
+    public static final String GROOVY_CONFIG = "src/main/resources/config.groovy";
     public static final String CONFIG_PROPERTIES = "config.properties";
 
     public static void main(String[] args) {
@@ -29,5 +27,9 @@ public class Main {
         NPropertyConfig nPropertyConfig = new NPropertyConfig(SRC_MAIN_RESOURCES_CONFIG_PROPERTIES);
         System.out.println("===nProperty===");
         System.out.println(nPropertyConfig.getConfig());
+
+        GroovyConf groovyConf = new GroovyConf(GROOVY_CONFIG);
+        System.out.println("===Groovy===");
+        System.out.println(groovyConf.getConfig());
     }
 }
