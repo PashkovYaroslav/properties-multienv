@@ -9,7 +9,7 @@ package com.epam.pashkov.multienv.props;
 public class Constants {
 
     public static class Path {
-        public static final String SRC_MAIN_RESOURCES_CONFIG_PROPERTIES = "src/main/resources/config.properties";
+        public static final String SRC_CONFIG_PROPERTIES = "src/main/resources/config.properties";
         public static final String GROOVY_CONFIG = "src/main/resources/config.groovy";
         public static final String CONFIG_PROPERTIES = "config.properties";
     }
