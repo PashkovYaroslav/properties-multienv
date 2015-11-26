@@ -1,6 +1,5 @@
 package com.epam.pashkov.multienv.props.configs;
 
-import com.epam.pashkov.multienv.props.Constants;
 import com.epam.pashkov.multienv.props.CurrentConf;
 import ru.yandex.qatools.properties.PropertyLoader;
 import ru.yandex.qatools.properties.annotations.Property;
