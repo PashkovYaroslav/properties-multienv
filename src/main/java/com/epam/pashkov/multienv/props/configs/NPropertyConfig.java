@@ -1,6 +1,7 @@
 package com.epam.pashkov.multienv.props.configs;
 
 import com.epam.pashkov.multienv.props.CurrentConf;
+import com.epam.pashkov.multienv.props.Environments;
 import jfork.nproperty.Cfg;
 import jfork.nproperty.ConfigParser;
 
@@ -15,17 +16,26 @@ import static com.epam.pashkov.multienv.props.Constants.*;
  * Time: 12:12
  */
 @Cfg
-public class NPropertyConfig {
+public class NPropertyConfig implements Config {
     private String path;
 
-    @Cfg(ParamNames.TEST_LOGIN_PARAM)
-    private static String login;
+    @Cfg(ParamNames.PROD_LOGIN_PARAM)
+    private static String prodLogin;
 
-    @Cfg(ParamNames.TEST_PRODCOUNT_PARAM)
+    @Cfg(ParamNames.PROD_COUNT_PARAM)
     private static int prodCount;
 
+    @Cfg(value = ParamNames.PROD_USERS_PARAM, splitter = ", ")
+    private static String[] prodUsers;
+
+    @Cfg(ParamNames.TEST_LOGIN_PARAM)
+    private static String testLogin;
+
+    @Cfg(ParamNames.TEST_COUNT_PARAM)
+    private static int testCount;
+
     @Cfg(value = ParamNames.TEST_USERS_PARAM, splitter = ", ")
-    private static String[] users;
+    private static String[] testUsers;
 
     public NPropertyConfig(String path) {
         try {
@@ -43,7 +53,11 @@ public class NPropertyConfig {
         }
     }
 
-    public CurrentConf getConfig() {
-        return new CurrentConf(login, prodCount, users);
+    public CurrentConf getConfig(Environments envVerion) {
+        if (envVerion.toString().equals(Environments.PROD.toString())) {
+            return new CurrentConf(prodLogin, prodCount, prodUsers);
+        } else {
+            return new CurrentConf(testLogin, testCount, testUsers);
+        }
     }
 }

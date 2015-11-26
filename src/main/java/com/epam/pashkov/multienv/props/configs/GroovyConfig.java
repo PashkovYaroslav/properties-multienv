@@ -1,6 +1,7 @@
 package com.epam.pashkov.multienv.props.configs;
 
 import com.epam.pashkov.multienv.props.CurrentConf;
+import com.epam.pashkov.multienv.props.Environments;
 import groovy.util.ConfigObject;
 import groovy.util.ConfigSlurper;
 
@@ -15,7 +16,7 @@ import static com.epam.pashkov.multienv.props.Constants.*;
  * Date: 25.11.2015
  * Time: 14:10
  */
-public class GroovyConfig {
+public class GroovyConfig implements Config {
 
     private String path;
 
@@ -23,7 +24,7 @@ public class GroovyConfig {
         this.path = path;
     }
 
-    public CurrentConf getConfig() {
+    public CurrentConf getConfig(Environments envVersion) {
         ConfigObject config = null;
         try {
             config = new ConfigSlurper().parse(new File(path).toURL());
@@ -31,9 +32,9 @@ public class GroovyConfig {
             e.printStackTrace();
         }
         Map flattenedConfig = config.flatten();
-        String[] users = ((String) flattenedConfig.get(ParamNames.TEST_USERS_PARAM)).split(", ");
+        String[] users = ((String) flattenedConfig.get(String.format(Patterns.USERS_PARAM_X, envVersion.toString()))).split(", ");
 
-        return new CurrentConf((String) flattenedConfig.get(ParamNames.TEST_LOGIN_PARAM), (Integer) flattenedConfig
-                .get(ParamNames.TEST_PRODCOUNT_PARAM), users);
+        return new CurrentConf((String) flattenedConfig.get(String.format(Patterns.LOGIN_PARAM_X, envVersion.toString())),
+                (Integer) flattenedConfig.get(String.format(Patterns.COUNT_PARAM_X, envVersion.toString())), users);
     }
 }

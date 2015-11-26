@@ -1,6 +1,7 @@
 package com.epam.pashkov.multienv.props.configs;
 
 import com.epam.pashkov.multienv.props.CurrentConf;
+import com.epam.pashkov.multienv.props.Environments;
 import ru.yandex.qatools.properties.PropertyLoader;
 import ru.yandex.qatools.properties.annotations.Property;
 import ru.yandex.qatools.properties.annotations.Resource;
@@ -12,20 +13,29 @@ import static com.epam.pashkov.multienv.props.Constants.*;
  */
 
 @Resource.Classpath(Path.CONFIG_PROPERTIES)
-public class YConfig {
+public class YConfig implements Config {
 
     public YConfig() {
         PropertyLoader.populate(this);
     }
 
+    @Property(ParamNames.PROD_LOGIN_PARAM)
+    private String prodLogin;
+
+    @Property(ParamNames.PROD_COUNT_PARAM)
+    private int prodCount;
+
+    @Property(ParamNames.PROD_USERS_PARAM)
+    private String[] prodUsers;
+
     @Property(ParamNames.TEST_LOGIN_PARAM)
     private String testLogin;
 
-    @Property(ParamNames.TEST_PRODCOUNT_PARAM)
+    @Property(ParamNames.TEST_COUNT_PARAM)
     private int testProdCount;
 
     @Property(ParamNames.TEST_USERS_PARAM)
-    private String[] users;
+    private String[] testUsers;
 
     public String getTestLogin() {
         return testLogin;
@@ -36,11 +46,26 @@ public class YConfig {
     }
 
     public String[] getTestUsers() {
-        return users;
+        return testUsers;
     }
 
-    public CurrentConf getConfig() {
-        YConfig yandexProp = new YConfig();
-        return new CurrentConf(yandexProp.getTestLogin(), yandexProp.getTestProdCount(), yandexProp.getTestUsers());
+    public String getProdLogin() {
+        return prodLogin;
+    }
+
+    public int getProdCount() {
+        return prodCount;
+    }
+
+    public String[] getProdUsers() {
+        return prodUsers;
+    }
+
+    public CurrentConf getConfig(Environments envVersion) {
+        if (envVersion.toString().equals(Environments.PROD.toString())) {
+            return new CurrentConf(prodLogin, prodCount, prodUsers);
+        } else {
+            return new CurrentConf(testLogin, testProdCount, testUsers);
+        }
     }
 }

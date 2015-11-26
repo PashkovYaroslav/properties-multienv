@@ -16,7 +16,17 @@ public class Constants {
 
     public static class ParamNames {
         public static final String TEST_LOGIN_PARAM = "test.login";
-        public static final String TEST_PRODCOUNT_PARAM = "test.prodcount";
+        public static final String TEST_COUNT_PARAM = "test.prodcount";
         public static final String TEST_USERS_PARAM = "test.users";
+
+        public static final String PROD_LOGIN_PARAM = "prod.login";
+        public static final String PROD_COUNT_PARAM = "prod.prodcount";
+        public static final String PROD_USERS_PARAM = "prod.users";
+    }
+
+    public static class Patterns {
+        public static final String LOGIN_PARAM_X = "%s.login";
+        public static final String COUNT_PARAM_X = "%s.prodcount";
+        public static final String USERS_PARAM_X = "%s.users";
     }
 }
